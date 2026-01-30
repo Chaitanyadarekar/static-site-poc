@@ -1,0 +1,40 @@
+---
+import styles from './AboutTeam.module.css';
+
+const TEAM_MEMBERS = [
+  {
+    initials: 'JS',
+    name: 'Jane Smith',
+    role: 'Founder & CEO',
+    bio: 'Full-stack developer with 10+ years of experience in building scalable web applications.'
+  },
+  {
+    initials: 'MD',
+    name: 'Mike Davis',
+    role: 'Lead Designer',
+    bio: 'UX/UI designer passionate about creating intuitive and beautiful user interfaces.'
+  },
+  {
+    initials: 'SK',
+    name: 'Sarah Kim',
+    role: 'Senior Developer',
+    bio: 'Frontend specialist focused on performance optimization and modern web standards.'
+  }
+];
+---
+
+<div class={styles.teamSection}>
+  <h2 class={styles.sectionTitle}>Meet Our Team</h2>
+  <div class={styles.teamGrid}>
+    {TEAM_MEMBERS.map((member) => (
+      <div class={styles.teamMember}>
+        <div class={styles.memberAvatar}>{member.initials}</div>
+        <h3 class={styles.memberName}>{member.name}</h3>
+        <p class={styles.memberRole}>{member.role}</p>
+        <p class={styles.memberBio}>
+          {member.bio}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>

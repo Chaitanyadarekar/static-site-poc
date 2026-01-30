@@ -1,0 +1,36 @@
+---
+import styles from './Navbar.module.css';
+
+export interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '#pricing', label: 'Pricing' },
+  { href: '/about-us', label: 'About Us' }
+];
+---
+
+<nav class={styles.navbar}>
+  <div class:list={['container', styles.navContainer]}>
+    <a href="/" class={styles.logo}>
+      YourSite
+    </a>
+    
+    <ul class={styles.navLinks}>
+      {navItems.map((item) => (
+        <li>
+          <a 
+            href={item.href} 
+            class:list={[styles.navLink, { [styles.active]: currentPath === item.href }]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>

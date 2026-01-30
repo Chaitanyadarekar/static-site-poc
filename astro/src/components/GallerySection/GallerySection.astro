@@ -1,0 +1,39 @@
+---
+import angelOne from '../../assets/images/broker/angel-one.png';
+import icici from '../../assets/images/broker/icici.png';
+import upstox from '../../assets/images/broker/upstox.png';
+import zerodha from '../../assets/images/broker/zerodha.png';
+import TickIcon from '../../assets/icons/tick.svg?raw';
+import styles from './GallerySection.module.css';
+
+const PRODUCT_BENEFITS = [
+  'Lightning-fast execution with zero latency',
+  'Advanced analytics and real-time market insights', 
+  'Bank-level security with 256-bit encryption'
+];
+---
+
+<section class={styles.section}>
+  <div class={styles.sectionContent}>
+    <div class={styles.gallerySection}>
+      <h2 class={styles.galleryTitle}>Our Featured Work</h2>
+      <p class={styles.gallerySubtitle}>Benefits of using our product</p>
+      
+      <div class={styles.benefitsContainer}>
+        {PRODUCT_BENEFITS.map((benefit) => (
+          <div class={styles.benefitItem}>
+            <div class={styles.tickIcon} set:html={TickIcon}></div>
+            <span class={styles.benefitText}>{benefit}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class={styles.imageGrid}>
+        <img src={angelOne.src} alt="Angel One broker" class={styles.galleryImage} loading="lazy" />
+        <img src={icici.src} alt="ICICI broker" class={styles.galleryImage} loading="lazy" />
+        <img src={upstox.src} alt="Upstox broker" class={styles.galleryImage} loading="lazy" />
+        <img src={zerodha.src} alt="Zerodha broker" class={styles.galleryImage} loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+---
+export interface Props {
+  path: string;
+  width?: number | string;
+  height?: number | string;
+  viewBox?: string;
+  class?: string;
+  fill?: string;
+  stroke?: string;
+}
+
+const { 
+  path, 
+  width = 24, 
+  height = 24, 
+  viewBox = "0 0 24 24", 
+  class: className, 
+  fill = "none", 
+  stroke = "currentColor" 
+} = Astro.props;
+---
+
+<svg 
+  class={className} 
+  width={width} 
+  height={height} 
+  viewBox={viewBox} 
+  fill={fill} 
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path 
+    d={path} 
+    stroke={stroke} 
+    stroke-width="2" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"
+  />
+</svg>

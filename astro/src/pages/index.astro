@@ -1,0 +1,15 @@
+---
+import HeroSection from '../components/HeroSection/HeroSection.astro';
+import GallerySection from '../components/GallerySection/GallerySection.astro';
+import PricingSection from '../components/PricingSection/PricingSection.astro';
+import '../styles/lazyLoading.css';
+import Layout from '../layouts/Layout/Layout.astro';
+---
+
+<Layout title="Home - YourSite" currentPath="/">
+  <HeroSection />
+  <GallerySection />
+  <PricingSection />
+</Layout>
+
+<script src="../scripts/lazyLoading.js"></script>

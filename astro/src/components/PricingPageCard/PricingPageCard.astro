@@ -1,0 +1,35 @@
+---
+import styles from './PricingPageCard.module.css';
+
+interface Props {
+  name: string;
+  price: number;
+  currency: string;
+  period: string;
+  features: string[];
+  buttonText: string;
+  buttonVariant: 'primary' | 'outline';
+  featured?: boolean;
+  badge?: string;
+}
+
+const { name, price, currency, period, features, buttonText, buttonVariant, featured = false, badge } = Astro.props;
+---
+
+<div class:list={[styles.pricingCard, featured ? styles.featured : '']}>
+  {badge && <div class={styles.featuredBadge}>{badge}</div>}
+  <h3 class={styles.planName}>{name}</h3>
+  <div class={styles.planPrice}>
+    <span class={styles.currency}>{currency}</span>
+    <span class={styles.amount}>{price}</span>
+    <span class={styles.period}>{period}</span>
+  </div>
+  <ul class={styles.planFeatures}>
+    {features.map((feature) => (
+      <li>{feature}</li>
+    ))}
+  </ul>
+  <button class:list={[styles.btn, buttonVariant === 'primary' ? styles.btnPrimary : styles.btnOutline]}>
+    {buttonText}
+  </button>
+</div>

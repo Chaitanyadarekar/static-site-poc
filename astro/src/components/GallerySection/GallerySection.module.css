@@ -1,0 +1,99 @@
+
+.section {
+  height: 900px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sectionContent {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+
+.gallerySection {
+  text-align: center;
+  width: 100%;
+}
+
+.galleryTitle {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
+}
+
+.gallerySubtitle {
+  font-size: var(--font-size-xl);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.benefitsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 600px;
+  margin: 0 auto var(--space-3xl);
+  text-align: left;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+}
+
+.tickIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+.benefitText {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.imageGrid {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.galleryImage {
+  max-height: 25px;
+  width: auto;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
+}
+
+.galleryImage:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+  .imageGrid {
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .imageGrid {
+    gap: var(--space-md);
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,0 +1,46 @@
+---
+
+import Navbar from '../../components/Navbar/Navbar.astro';
+import '../../styles/reset.css';
+import '../../styles/tokens.css';
+import styles from './Layout.module.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  currentPath?: string;
+}
+
+const { 
+  title, 
+  description = 'A modern static site built with Astro',
+  currentPath = '/'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  
+  <body>
+    <div class={styles.layout}>
+      <Navbar currentPath={currentPath} />
+      
+      <main class={styles.main}>
+        <slot />
+      </main>
+      
+      <footer class={styles.footer}>
+        <div class:list={['container', styles.footerContent]}>
+          <p>&copy; 2026 YourSite. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

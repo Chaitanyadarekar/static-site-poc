@@ -1,0 +1,25 @@
+.aboutHero {
+  text-align: center;
+  padding: var(--space-3xl) var(--container-padding) var(--space-2xl);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pageTitle {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
+}
+
+.pageDescription {
+  font-size: var(--font-size-xl);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+@media (max-width: 768px) {
+  .pageTitle {
+    font-size: var(--font-size-3xl);
+  }
+}

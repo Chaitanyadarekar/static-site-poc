@@ -1,0 +1,42 @@
+---
+import styles from './AboutValues.module.css';
+import { VALUES } from '../../constants/values.js';
+---
+
+<div class={styles.valuesSection}>
+  <h2 class={styles.sectionTitle}>Our Values</h2>
+  
+  <div class={styles.tabContainer}>
+    <div class={styles.tabButtons}>
+      {VALUES.map((value, index) => (
+        <button 
+          class={styles.tabButton}
+          data-tab={index}
+          data-active={index === 0 ? "true" : "false"}
+          type="button"
+        >
+          {value.title}
+        </button>
+      ))}
+    </div>
+    
+    <div class={styles.tabContent}>
+      {VALUES.map((value, index) => (
+        <div 
+          class={styles.tabPane}
+          data-pane={index}
+          data-active={index === 0 ? "true" : "false"}
+        >
+          <div class={styles.valueItem}>
+            <h3 class={styles.valueTitle}>{value.title}</h3>
+            <p class={styles.valueDescription}>
+              {value.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script src="../../scripts/tabSwitching.js"></script>
