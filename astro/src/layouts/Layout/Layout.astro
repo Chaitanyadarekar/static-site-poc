@@ -1,14 +1,12 @@
 ---
 
-import Navbar from './Navbar.astro';
+import '@styles/lazyLoading.css';
+import '@styles/reset.css';
+import '@styles/utilities.css';
 import Footer from './Footer.astro';
+import Navbar from './Navbar.astro';
 import { DESIGN_TOKENS } from './designTokens';
-
-export interface Props {
-  title: string;
-  description?: string;
-  currentPath?: string;
-}
+import type { LayoutProps as Props } from './models';
 
 const { 
   title, 
@@ -39,55 +37,9 @@ const {
     </div>
   </body>
 </html>
-
-<script>
-  import { initLazyLoading } from "./lazyLoading";
-  initLazyLoading();
-</script>
+  i
 
 <style define:vars={DESIGN_TOKENS} is:global>
-  /* Reset Styles */
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    font-family: var(--font-family);
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    line-height: var(--line-height-normal);
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-  }
-
-  /* Utility Classes */
-  .container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
-  }
-
-  .text-center {
-    text-align: center;
-  }
-
-  .text-primary {
-    color: var(--text-primary);
-  }
-
-  .text-secondary {
-    color: var(--text-secondary);
-  }
-
-  .text-muted {
-    color: var(--text-muted);
-  }
-
   /* Layout Styles */
   .layout {
     min-height: 100vh;
@@ -98,38 +50,9 @@ const {
   .main {
     flex: 1;
   }
-
-  /* Lazy loading styles */
-  section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-      opacity 0.6s ease-out,
-      transform 0.6s ease-out;
-  }
-
-  section.section-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  img[loading="lazy"] {
-    opacity: 0;
-    transform: scale(0.95);
-    transition:
-      opacity 0.4s ease-out,
-      transform 0.4s ease-out;
-  }
-
-  img.image-loaded {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    section,
-    img[loading="lazy"] {
-      transition: none;
-    }
-  }
 </style>
+
+<script>
+  import { initLazyLoading } from './lazyLoading';
+  initLazyLoading();
+</script>

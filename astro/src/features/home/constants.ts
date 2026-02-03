@@ -1,14 +1,4 @@
-export interface PricingPlan {
-  name: string;
-  price: number;
-  currency: string;
-  period: string;
-  features: string[];
-  buttonText: string;
-  buttonVariant: "primary" | "outline";
-  featured: boolean;
-  featuredBadge?: string;
-}
+import type { PricingPlan } from "./models";
 
 export const PRICING_PLANS: PricingPlan[] = [
   {

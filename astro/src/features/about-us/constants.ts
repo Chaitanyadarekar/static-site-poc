@@ -1,8 +1,4 @@
-export interface Value {
-  id: string;
-  title: string;
-  description: string;
-}
+import type { Value } from "./models";
 
 export const VALUES: Value[] = [
   {
