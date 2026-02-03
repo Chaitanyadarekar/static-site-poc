@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout/Layout.astro';
+import AboutStory from './components/AboutStory.astro';
+import AboutValues from './components/AboutValues.astro';
+import AboutTeam from './components/AboutTeam.astro';
+import AboutHero from './components/AboutHero.astro';
+---
+
+<Layout title="About Us - YourSite" currentPath="/about-us">
+    <AboutHero slot="hero" />
+    <section class=" about-content">
+        <div class="content-grid">
+          <AboutStory slot="story" />
+          <AboutValues slot="values" />
+        </div>
+      <AboutTeam slot="team" />
+    </section>
+  </AboutLayout>
+</Layout>
+
+
+<style>
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--container-padding);
+}
+
+.content-grid {
+  display: grid;
+  gap: var(--space-3xl);
+  margin-bottom: var(--space-3xl);
+}
+</style>

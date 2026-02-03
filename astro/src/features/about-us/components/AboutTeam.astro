@@ -1,0 +1,111 @@
+---
+const TEAM_MEMBERS = [
+  {
+    initials: 'JS',
+    name: 'Jane Smith',
+    role: 'Founder & CEO',
+    bio: 'Full-stack developer with 10+ years of experience in building scalable web applications.'
+  },
+  {
+    initials: 'MD',
+    name: 'Mike Davis',
+    role: 'Lead Designer',
+    bio: 'UX/UI designer passionate about creating intuitive and beautiful user interfaces.'
+  },
+  {
+    initials: 'SK',
+    name: 'Sarah Kim',
+    role: 'Senior Developer',
+    bio: 'Frontend specialist focused on performance optimization and modern web standards.'
+  }
+];
+---
+
+<div class="team-section">
+  <h2 class="section-title">Meet Our Team</h2>
+  <div class="team-grid">
+    {TEAM_MEMBERS.map((member) => (
+      <div class="team-member">
+        <div class="member-avatar">{member.initials}</div>
+        <h3 class="member-name">{member.name}</h3>
+        <p class="member-role">{member.role}</p>
+        <p class="member-bio">
+          {member.bio}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+.team-section {
+  text-align: center;
+}
+
+.section-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-xl);
+  color: var(--text-primary);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+.team-member {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  transition: all var(--transition-normal);
+}
+
+.team-member:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.member-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0 auto var(--space-lg);
+}
+
+.member-name {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-xs);
+  color: var(--text-primary);
+}
+
+.member-role {
+  font-size: var(--font-size-base);
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+  font-weight: var(--font-weight-medium);
+}
+
+.member-bio {
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

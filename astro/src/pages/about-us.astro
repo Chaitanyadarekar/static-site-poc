@@ -1,17 +1,5 @@
 ---
-import Layout from '../layouts/Layout/Layout.astro';
-import AboutHero from '../components/AboutHero/AboutHero.astro';
-import AboutStory from '../components/AboutStory/AboutStory.astro';
-import AboutValues from '../components/AboutValues/AboutValues.astro';
-import AboutTeam from '../components/AboutTeam/AboutTeam.astro';
-import AboutLayout from '../layouts/AboutLayout/AboutLayout.astro';
+import AboutUsPage from '../features/about-us/AboutUsPage.astro';
 ---
 
-<Layout title="About Us - YourSite" currentPath="/about-us">
-  <AboutLayout>
-    <AboutHero slot="hero" />
-    <AboutStory slot="story" />
-    <AboutValues slot="values" />
-    <AboutTeam slot="team" />
-  </AboutLayout>
-</Layout>
+<AboutUsPage/>

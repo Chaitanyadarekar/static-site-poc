@@ -1,0 +1,140 @@
+---
+import angelOne from '../../../assets/images/broker/angel-one.png';
+import icici from '../../../assets/images/broker/icici.png';
+import upstox from '../../../assets/images/broker/upstox.png';
+import zerodha from '../../../assets/images/broker/zerodha.png';
+import TickIcon from '../../../assets/icons/tick.svg';
+
+const PRODUCT_BENEFITS = [
+  'Lightning-fast execution with zero latency',
+  'Advanced analytics and real-time market insights', 
+  'Bank-level security with 256-bit encryption'
+];
+---
+
+<section class="gallery-section-wrapper">
+  <div class="section-content">
+    <div class="gallery-section">
+      <h2 class="gallery-title">Our Featured Work</h2>
+      <p class="gallery-subtitle">Benefits of using our product</p>
+     
+
+      <div class="image-grid">
+        <img src={angelOne.src} alt="Angel One broker" class="gallery-image" loading="lazy" />
+        <img src={icici.src} alt="ICICI broker" class="gallery-image" loading="lazy" />
+        <img src={upstox.src} alt="Upstox broker" class="gallery-image" loading="lazy" />
+        <img src={zerodha.src} alt="Zerodha broker" class="gallery-image" loading="lazy" />
+      </div>
+    </div>
+
+     
+      <div class="benefits-container">
+        {PRODUCT_BENEFITS.map((benefit) => (
+          <div class="benefit-item">
+            <TickIcon  width={20} height={20} />
+            <span class="benefit-text">{benefit}</span>
+          </div>
+        ))}
+      </div>
+  </div>
+</section>
+
+<style>
+  .gallery-section-wrapper {
+    height: 900px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .section-content {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+  }
+
+  .gallery-section {
+    text-align: center;
+    width: 100%;
+  }
+
+  .gallery-title {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-lg);
+    color: var(--text-primary);
+  }
+
+  .gallery-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .benefits-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 600px;
+    margin: 32px auto var(--space-3xl);
+    text-align: left;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+  }
+
+  .tick-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--color-primary);
+  }
+
+  .benefit-text {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .image-grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+  }
+
+  .gallery-image {
+    max-height: 25px;
+    width: auto;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-normal);
+  }
+
+  .gallery-image:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+
+  @media (max-width: 1024px) {
+    .image-grid {
+      gap: var(--space-lg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .image-grid {
+      gap: var(--space-md);
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
