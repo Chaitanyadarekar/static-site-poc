@@ -1,0 +1,181 @@
+---
+// Magnet Rectangles Section - Rectangles that move closer when scrolled into view
+---
+
+<section class="magnet-section">
+  <div class="section-content">
+    <h2 class="section-title">Magnetic Rectangles</h2>
+    <p class="section-description">Watch the rectangles attract each other as they come into view</p>
+    
+    <div class="magnet-container">
+      <div class="rectangle-group">
+        <div class="rectangle large-rect" id="largeRect"></div>
+        <div class="rectangle-pair">
+          <div class="rectangle small-rect" id="smallRect1"></div>
+          <div class="rectangle small-rect" id="smallRect2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .magnet-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+    position: relative;
+  }
+  
+  .section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  .section-description {
+    font-size: 1.2rem;
+    color: #a0a9c0;
+    margin-bottom: 4rem;
+  }
+  
+  .magnet-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    overflow: hidden;
+  }
+  
+  .rectangle-group {
+    display: flex;
+    align-items: center;
+    gap: 200px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .rectangle {
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .large-rect {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    transform: translateX(-300px);
+  }
+  
+  .rectangle-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .small-rect {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(45deg, #a8edea, #fed6e3);
+  }
+  
+  #smallRect1 {
+    transform: translateX(200px) translateY(-50px);
+  }
+  
+  #smallRect2 {
+    transform: translateX(200px) translateY(50px);
+  }
+  
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .section-description {
+      font-size: 1rem;
+    }
+    
+    .rectangle-group {
+      gap: 100px;
+    }
+    
+    .large-rect {
+      width: 120px;
+      height: 120px;
+      transform: translateX(-150px);
+    }
+    
+    .small-rect {
+      width: 60px;
+      height: 60px;
+    }
+    
+    #smallRect1 {
+      transform: translateX(100px) translateY(-30px);
+    }
+    
+    #smallRect2 {
+      transform: translateX(100px) translateY(30px);
+    }
+  }
+</style>
+
+<script>
+  import { animate, scroll } from 'motion';
+  
+  function initMagnetAnimation() {
+    const largeRect = document.getElementById('largeRect');
+    const smallRect1 = document.getElementById('smallRect1');
+    const smallRect2 = document.getElementById('smallRect2');
+    const section = document.querySelector('.magnet-section');
+    
+    if (!largeRect || !smallRect1 || !smallRect2 || !section) return;
+    
+    scroll(
+      animate(largeRect, {
+        x: [-400, 0],
+      }),
+      {
+        target: section,
+        offset: ['start end', 'center center']
+      }
+    );
+    
+    // Animate small rectangles moving left and closer together
+    scroll(
+      animate(smallRect1, {
+        x: [400, -100],
+        y: [-50, -25],
+      }),
+      {
+        target: section,
+        offset: ['start end', 'center center']
+      }
+    );
+    
+    scroll(
+      animate(smallRect2, {
+        x: [400, -100],
+        y: [50, 25],
+      }),
+      {
+        target: section,
+        offset: ['start end', 'center center']
+      }
+    );
+  }
+  
+  document.addEventListener('DOMContentLoaded', initMagnetAnimation);
+</script>

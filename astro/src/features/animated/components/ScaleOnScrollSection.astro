@@ -1,0 +1,103 @@
+---
+// Scale on Scroll Section - Rectangle that scales based on scroll position
+---
+
+<section class="scale-section">
+  <div class="section-content">
+    <h2 class="section-title">Scale on Scroll Animation</h2>
+    <p class="section-description">Watch the rectangle scale as you scroll through this section</p>
+    
+    <div class="scale-container">
+      <div class="scale-rectangle" id="scaleRect"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .scale-section {
+    height: 150vh;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    position: relative;
+  }
+  
+  .section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  .section-description {
+    font-size: 1.2rem;
+    color: #a0a9c0;
+    margin-bottom: 4rem;
+  }
+  
+  .scale-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+  
+  .scale-rectangle {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
+    transform: scale(0.2);
+    transition: all 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .section-description {
+      font-size: 1rem;
+    }
+    
+    .scale-rectangle {
+      width: 150px;
+      height: 150px;
+    }
+  }
+</style>
+
+<script>
+  import { animate, scroll } from 'motion';
+  
+  function initScaleAnimation() {
+    const scaleRect = document.getElementById('scaleRect');
+    const section = document.querySelector('.scale-section');
+    
+    if (!scaleRect || !section) return;
+    
+    // Scroll-based animation
+    scroll(
+      animate(scaleRect, {
+        scale: [0.1, 1, 0.1]
+      }),
+      {
+        target: section,
+        offset: ['start end', 'center center', 'end start']
+      }
+    );
+  }
+  
+  // Initialize when DOM is loaded
+  document.addEventListener('DOMContentLoaded', initScaleAnimation);
+</script>

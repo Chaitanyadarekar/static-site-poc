@@ -1,0 +1,228 @@
+---
+// Marquee Cards Section - Cards with marquee effect that pause and scale on hover
+import { MARQUEE_CARDS } from '../constants';
+
+// Create duplicated array for seamless loop
+const allCards = [...MARQUEE_CARDS, ...MARQUEE_CARDS];
+---
+
+<section class="marquee-section">
+  <div class="section-content">
+    <h2 class="section-title">Marquee Cards</h2>
+    <p class="section-description">Hover over the cards to pause the marquee and scale them</p>
+    
+    <div class="marquee-container" id="marqueeContainer">
+      <div class="marquee-track" id="marqueeTrack">
+        {allCards.map((card, index) => (
+          <div class="card" data-card={index + 1}>
+            <h3>{card.title}</h3>
+            <p>{card.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  .section-description {
+    font-size: 1.2rem;
+    color: #a0a9c0;
+    margin-bottom: 4rem;
+  }
+  
+  .marquee-container {
+    width: 100%;
+    overflow: visible;
+    padding: 2rem 0;
+    mask: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+    -webkit-mask: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+  }
+  
+  .marquee-track {
+    display: flex;
+    gap: 2rem;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+  
+  .card {
+    min-width: 300px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .card h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card p {
+    color: #a0a9c0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .card:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+  
+  .marquee-track.paused {
+    animation-play-state: paused;
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .section-description {
+      font-size: 1rem;
+    }
+    
+    .card {
+      min-width: 250px;
+      height: 150px;
+      padding: 1.5rem;
+    }
+    
+    .card h3 {
+      font-size: 1.2rem;
+    }
+    
+    .card p {
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<script>
+  import { animate } from 'motion';
+  
+  function initMarqueeAnimation() {
+    const marqueeTrack = document.getElementById('marqueeTrack');
+    const cards = document.querySelectorAll('.card');
+    
+    if (!marqueeTrack || !cards.length) return;
+    
+    let hoverTimeout;
+    
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        // Pause the marquee
+        marqueeTrack.classList.add('paused');
+        
+        // Scale the card with motion.js
+        animate(card, {
+          scale: 1.1,
+          y: -10
+        }, {
+          duration: 0.3,
+          easing: 'ease-out'
+        });
+        
+        // Clear any existing timeout
+        clearTimeout(hoverTimeout);
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        // Resume the marquee after a short delay
+        hoverTimeout = setTimeout(() => {
+          marqueeTrack.classList.remove('paused');
+        }, 300);
+        
+        // Reset card scale
+        animate(card, {
+          scale: 1,
+          y: 0
+        }, {
+          duration: 0.3,
+          easing: 'ease-out'
+        });
+      });
+    });
+    
+    // Pause marquee on container hover for better UX
+    const container = document.querySelector('.marquee-container');
+    if (container) {
+      container.addEventListener('mouseenter', () => {
+        clearTimeout(hoverTimeout);
+      });
+      
+      container.addEventListener('mouseleave', () => {
+        hoverTimeout = setTimeout(() => {
+          marqueeTrack.classList.remove('paused');
+        }, 500);
+      });
+    }
+  }
+  
+  // Initialize when DOM is loaded
+  document.addEventListener('DOMContentLoaded', initMarqueeAnimation);
+</script>
