@@ -20,15 +20,14 @@ Astro POC for following flows
 
 - styling
   - Using Tailwind CSS utility classes
-  - Consistent design with main implementation, just different styling approach
 - folder structure
   - /pages (route files that import from type-based folders)
   - /components (organized by page: /home, /about, /animated)
-  - /scripts (organized by page: /animated, /about)
-  - /constants (organized by page: /home, /animated)
+  - /scripts contains client side scripts
   - /layouts contains shared layouts components
   - /assets contains images, icons
   - /data contains data files for components
+  - /styles contains all common styles
 
 ## Development Commands
 
