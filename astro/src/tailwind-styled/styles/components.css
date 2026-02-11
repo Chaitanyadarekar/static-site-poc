@@ -1,0 +1,88 @@
+/*
+ * Tailwind Base + Reusable Component Classes
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Layout */
+@layer components {
+  .container-main {
+    @apply max-w-7xl mx-auto px-6;
+  }
+
+  .section-full {
+    @apply py-16 lg:py-24;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-slate-800 rounded-lg p-6 border border-slate-700 shadow-card;
+  }
+
+  .card-hover {
+    @apply hover:shadow-card-hover hover:bg-slate-700 transition-all duration-normal;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-block font-semibold py-3 px-6 rounded-lg transition-all duration-fast;
+  }
+
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-hover text-white;
+  }
+
+  .btn-secondary {
+    @apply bg-slate-700 hover:bg-slate-600 text-white;
+  }
+
+  .btn-outline {
+    @apply border border-slate-600 hover:bg-slate-800 text-white bg-transparent;
+  }
+
+  /* Typography */
+  .heading-1 {
+    @apply text-4xl md:text-6xl font-bold text-slate-100;
+  }
+
+  .heading-2 {
+    @apply text-3xl md:text-5xl font-bold text-slate-100;
+  }
+
+  .heading-3 {
+    @apply text-2xl md:text-3xl font-bold text-slate-100;
+  }
+
+  .heading-4 {
+    @apply text-xl md:text-2xl font-semibold text-slate-100;
+  }
+
+  .text-body {
+    @apply text-base leading-relaxed text-slate-300;
+  }
+
+  .text-body-lg {
+    @apply text-lg leading-relaxed text-slate-300;
+  }
+
+  .text-caption {
+    @apply text-sm text-slate-400;
+  }
+
+  /* Form Elements */
+  .input {
+    @apply bg-slate-800 border border-slate-600 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-primary;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-block bg-primary text-white text-xs px-2 py-1 rounded-full;
+  }
+
+  /* Links */
+  .link {
+    @apply text-primary hover:text-primary-light transition-colors duration-fast underline;
+  }
+}

@@ -51,7 +51,7 @@ $ ./serve-build.tailwind.sh # Serve build on http://localhost:8081
 **Both versions (side-by-side comparison):**
 
 ```bash
-$ ./serve-build.both.sh     # Serve both builds simultaneously
+$ ./serve-build.sh     # Serve both builds simultaneously
                            # Main: http://localhost:8080
                            # Tailwind: http://localhost:8081
 ```

@@ -1,26 +1,21 @@
 ---
 import heroImage from '@/tailwind-styled/assets/images/hero-image.png';
-import { DESIGN_TOKENS, cn, responsive } from '@/tailwind-styled/utils/designTokens';
 ---
 
-<section class={cn('h-[900px] flex items-center w-full', DESIGN_TOKENS.layout.section)}>
-  <div class={DESIGN_TOKENS.layout.container}>
+<section class="h-[900px] flex items-center w-full py-16 lg:py-24">
+  <div class="container-main">
     <div class="flex gap-16 items-center w-full">
       <div class="flex-1 flex flex-col justify-center">
-        <h1 class={cn(DESIGN_TOKENS.typography.h1, DESIGN_TOKENS.colors.text.primary, 'leading-tight mb-8')}>
+        <h1 class="heading-1 leading-tight mb-8">
           Welcome to Your Dark Mode Site
         </h1>
-        <p class={cn(DESIGN_TOKENS.typography.bodyLarge, DESIGN_TOKENS.colors.text.secondary, 'max-w-md mb-8')}>
+        <p class="text-body-lg max-w-md mb-8">
           A modern, responsive website built with Astro, designed for the dark web experience.
         </p>
         <div class="mt-6">
           <a 
             href="/about" 
-            class={cn(
-              DESIGN_TOKENS.components.button.primary,
-              'inline-block py-4 px-12 text-lg no-underline',
-              'hover:-translate-y-0.5 hover:shadow-lg'
-            )}
+            class="btn btn-primary py-4 px-12 text-lg no-underline hover:-translate-y-0.5 hover:shadow-lg"
           >
             Explore Now
           </a>

@@ -1,0 +1,116 @@
+---
+// About Text Section Component
+---
+
+<section class="about-text-section">
+  <div class="section-content">
+    <div class="text-content">
+      <h2 class="section-title">About Our Platform</h2>
+      <p class="section-text">
+        Our cutting-edge platform revolutionizes the way you interact with modern web applications. 
+        Built with performance and user experience at its core, we deliver seamless functionality 
+        across all devices and screen sizes.
+      </p>
+      <p class="section-text">
+        From lightning-fast load times to intuitive user interfaces, every aspect of our platform 
+        is designed to exceed expectations. We combine the latest web technologies with thoughtful 
+        design principles to create experiences that truly matter.
+      </p>
+      <div class="features-grid">
+        <div class="feature-item">
+          <h3 class="feature-title">Performance First</h3>
+          <p class="feature-description">Optimized for speed with minimal load times</p>
+        </div>
+        <div class="feature-item">
+          <h3 class="feature-title">Mobile Responsive</h3>
+          <p class="feature-description">Perfect experience on any device size</p>
+        </div>
+        <div class="feature-item">
+          <h3 class="feature-title">Modern Design</h3>
+          <p class="feature-description">Clean, contemporary interfaces that users love</p>
+        </div>
+        <div class="feature-item">
+          <h3 class="feature-title">Reliable Support</h3>
+          <p class="feature-description">24/7 customer support when you need it</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-text-section {
+    height: 900px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .section-content {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+  }
+
+  .text-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-xl);
+    color: var(--text-primary);
+    line-height: var(--line-height-tight);
+  }
+
+  .section-text {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-lg);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-3xl);
+  }
+
+  .feature-item {
+    text-align: center;
+    padding: var(--space-lg);
+  }
+
+  .feature-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .feature-description {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    line-height: var(--line-height-normal);
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .section-title {
+      font-size: var(--font-size-3xl);
+    }
+
+    .section-text {
+      font-size: var(--font-size-base);
+    }
+  }
+</style>

@@ -1,6 +1,4 @@
 ---
-import { DESIGN_TOKENS, cn } from '@/tailwind-styled/utils/designTokens';
-
 const VALUES = [
   {
     title: 'Innovation',
@@ -18,17 +16,13 @@ const VALUES = [
 ---
 
 <div class="values-section">
-  <h2 class={cn(DESIGN_TOKENS.typography.h3, DESIGN_TOKENS.colors.text.primary, 'mb-8')}>Our Values</h2>
+  <h2 class="heading-3 mb-8">Our Values</h2>
   
   <div class="tab-container">
     <div class="flex space-x-4 mb-8">
       {VALUES.map((value, index) => (
         <button 
-          class={cn(
-            'tab-button px-6 py-3 rounded-lg font-semibold transition-all duration-300',
-            'bg-slate-700 text-slate-300 hover:bg-slate-600',
-            'data-[active=true]:bg-primary data-[active=true]:text-white'
-          )}
+          class="tab-button px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-slate-700 text-slate-300 hover:bg-slate-600 data-[active=true]:bg-primary data-[active=true]:text-white"
           data-tab={index}
           data-active={index === 0 ? "true" : "false"}
           type="button"
@@ -45,11 +39,9 @@ const VALUES = [
           data-pane={index}
           data-active={index === 0 ? "true" : "false"}
         >
-          <div class={cn(DESIGN_TOKENS.layout.card, 'p-8')}>
-            <h3 class={cn(DESIGN_TOKENS.typography.h4, 'text-primary mb-4')}>{value.title}</h3>
-            <p class={cn(DESIGN_TOKENS.typography.bodyLarge, DESIGN_TOKENS.colors.text.secondary)}>
-              {value.description}
-            </p>
+          <div class="card p-8">
+            <h3 class="heading-4 text-primary mb-4">{value.title}</h3>
+            <p class="text-body-lg">{value.description}</p>
           </div>
         </div>
       ))}
