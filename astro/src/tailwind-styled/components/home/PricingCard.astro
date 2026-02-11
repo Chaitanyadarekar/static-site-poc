@@ -1,0 +1,46 @@
+---
+interface Props {
+  name: string;
+  price: number;
+  currency: string;
+  period: string;
+  features: string[];
+  buttonText: string;
+  buttonVariant: 'primary' | 'outline';
+  featured?: boolean;
+}
+
+const { name, price, currency, period, features, buttonText, buttonVariant, featured = false } = Astro.props;
+---
+
+<div class={`bg-slate-800 border ${featured ? 'border-indigo-600 shadow-lg' : 'border-slate-600'} rounded-2xl p-12 text-center relative transition-all duration-300 hover:border-indigo-600 hover:shadow-xl hover:-translate-y-1`}>
+  {featured && (
+    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-indigo-600 text-slate-900 px-4 py-1 rounded-full text-sm font-semibold">
+      Most Popular
+    </div>
+  )}
+  
+  <h3 class="text-2xl font-bold text-slate-100 mb-2">{name}</h3>
+  <div class="text-slate-100 mb-8">
+    <span class="text-lg">{currency}</span>
+    <span class="text-5xl font-bold">{price}</span>
+    <span class="text-lg text-slate-400">{period}</span>
+  </div>
+  <ul class="space-y-4 mb-8">
+    {features.map((feature) => (
+      <li class="text-slate-300 flex items-center justify-center">
+        <svg class="w-5 h-5 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        {feature}
+      </li>
+    ))}
+  </ul>
+  <button class={`w-full py-3 px-6 rounded-lg font-semibold text-lg transition-all duration-300 border-2 ${
+    buttonVariant === 'primary' 
+      ? 'bg-indigo-600 text-slate-900 border-transparent hover:bg-indigo-700 hover:-translate-y-0.5 hover:shadow-lg' 
+      : 'bg-transparent text-slate-100 border-slate-600 hover:border-indigo-600 hover:bg-indigo-600 hover:text-slate-900'
+  }`}>
+    {buttonText}
+  </button>
+</div>

@@ -1,0 +1,71 @@
+---
+import { MARQUEE_CARDS } from "@/tailwind-styled/data/marqueeCards";
+
+// Create duplicated array for seamless loop
+const allCards = [...MARQUEE_CARDS, ...MARQUEE_CARDS];
+---
+
+<section class="min-h-screen flex items-center w-full bg-gradient-to-br from-purple-900 to-teal-800 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 w-full text-center">
+    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Marquee Cards</h2>
+    <p class="text-lg md:text-xl text-slate-300 mb-16">Hover over the cards to pause the marquee and scale them</p>
+    
+    <div class="marquee-container w-full overflow-visible py-8">
+      <div 
+        id="marqueeTrack" 
+        class="flex gap-8 animate-marquee w-max"
+      >
+        {allCards.map((card, index) => (
+          <div class="card min-w-80 h-48 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 flex flex-col justify-center items-center text-center cursor-pointer transition-all duration-300 shadow-2xl shadow-black/20 hover:scale-110 hover:bg-white/15 hover:border-white/30 hover:shadow-3xl hover:shadow-black/30">
+            <h3 class="text-white text-xl font-semibold mb-2">{card.title}</h3>
+            <p class="text-slate-300 text-base leading-6">{card.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Custom marquee animation */
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+  
+  .animate-marquee.paused {
+    animation-play-state: paused;
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .marquee-container {
+    mask: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+    -webkit-mask: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+  }
+</style>
+
+<script>
+  import { initMarqueeAnimation } from '@/tailwind-styled/scripts/animated/marqueeAnimation';
+  
+  // Initialize immediately since DOM is already loaded when script runs
+  initMarqueeAnimation();
+</script>

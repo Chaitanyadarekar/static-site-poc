@@ -1,0 +1,37 @@
+---
+// Magnet Rectangles Section with Tailwind CSS
+---
+
+<section class="min-h-screen flex items-center w-full bg-gradient-to-br from-slate-900 to-slate-800 relative magnet-section">
+  <div class="max-w-7xl mx-auto px-6 w-full text-center">
+    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Magnetic Rectangles</h2>
+    <p class="text-lg md:text-xl text-slate-300 mb-16">Watch the rectangles attract each other as they come into view</p>
+    
+    <div class="flex justify-center items-center h-96 overflow-hidden">
+      <div class="flex items-center justify-center w-full gap-48 md:gap-64">
+        <div 
+          id="largeRect" 
+          class="w-32 h-32 md:w-48 md:h-48 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl shadow-2xl shadow-blue-500/30 transform -translate-x-96"
+        ></div>
+        
+        <div class="flex flex-col gap-4 md:gap-6">
+          <div 
+            id="smallRect1" 
+            class="w-16 h-16 md:w-24 md:h-24 bg-gradient-to-br from-pink-500 to-rose-500 rounded-xl shadow-xl shadow-pink-500/30 transform translate-x-48 -translate-y-12 md:-translate-y-16"
+          ></div>
+          <div 
+            id="smallRect2" 
+            class="w-16 h-16 md:w-24 md:h-24 bg-gradient-to-br from-pink-500 to-rose-500 rounded-xl shadow-xl shadow-pink-500/30 transform translate-x-48 translate-y-12 md:translate-y-16"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initMagnetAnimation } from '@/tailwind-styled/scripts/animated/magnetAnimation';
+  
+  // Initialize immediately since DOM is already loaded when script runs
+  initMagnetAnimation();
+</script>

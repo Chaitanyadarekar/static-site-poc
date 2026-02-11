@@ -1,0 +1,38 @@
+---
+import angelOne from '@/tailwind-styled/assets/images/broker/angel-one.png';
+import icici from '@/tailwind-styled/assets/images/broker/icici.png';
+import upstox from '@/tailwind-styled/assets/images/broker/upstox.png';
+import zerodha from '@/tailwind-styled/assets/images/broker/zerodha.png';
+import TickIcon from '@/tailwind-styled/assets/icons/tick.svg';
+
+const PRODUCT_BENEFITS = [
+  'Lightning-fast execution with zero latency',
+  'Advanced analytics and real-time market insights', 
+  'Bank-level security with 256-bit encryption'
+];
+---
+
+<section class="py-20 bg-slate-800">
+  <div class="w-full max-w-7xl mx-auto px-8">
+    <div class="mb-16">
+      <h2 class="text-4xl font-bold mb-4 text-slate-100 text-center">Our Featured Work</h2>
+      <p class="text-xl text-slate-300 text-center mb-12">Benefits of using our product</p>
+     
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <img src={angelOne.src} alt="Angel One broker" class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300" loading="lazy" />
+        <img src={icici.src} alt="ICICI broker" class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300" loading="lazy" />
+        <img src={upstox.src} alt="Upstox broker" class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300" loading="lazy" />
+        <img src={zerodha.src} alt="Zerodha broker" class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300" loading="lazy" />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {PRODUCT_BENEFITS.map((benefit) => (
+          <div class="flex items-center gap-3 bg-slate-700/50 p-6 rounded-lg">
+            <img src={TickIcon.src} alt="Check mark" class="w-6 h-6 flex-shrink-0" loading="lazy" />
+            <span class="text-slate-300">{benefit}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

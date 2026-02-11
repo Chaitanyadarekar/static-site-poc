@@ -1,0 +1,29 @@
+---
+import { PRICING_PLANS } from '@/tailwind-styled/data/pricingPlans';
+import PricingCard from '@/tailwind-styled/components/home/PricingCard.astro';
+---
+
+<section class="h-[900px] flex items-center w-full" id="pricing">
+  <div class="w-full max-w-7xl mx-auto px-8">
+    <div class="text-center w-full">
+      <h2 class="text-4xl font-bold mb-6 text-slate-100">Simple, Transparent Pricing</h2>
+      <p class="text-xl text-slate-300 mb-16 max-w-2xl mx-auto">
+        Choose the plan that works best for you. All plans include our core features.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {PRICING_PLANS.map((plan) => (
+          <PricingCard 
+            name={plan.name}
+            price={plan.price}
+            currency={plan.currency}
+            period={plan.period}
+            features={plan.features}
+            buttonText={plan.buttonText}
+            buttonVariant={plan.buttonVariant}
+            featured={plan.featured}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

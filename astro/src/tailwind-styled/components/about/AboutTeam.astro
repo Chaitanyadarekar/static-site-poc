@@ -1,0 +1,35 @@
+---
+const TEAM_MEMBERS = [
+  {
+    name: 'Alex Johnson',
+    role: 'Lead Developer',
+    description: 'Full-stack developer with expertise in modern web technologies.'
+  },
+  {
+    name: 'Sarah Chen',
+    role: 'Design Lead', 
+    description: 'UX/UI designer focused on creating intuitive user experiences.'
+  },
+  {
+    name: 'Mike Rodriguez',
+    role: 'DevOps Engineer',
+    description: 'Infrastructure specialist ensuring reliable and scalable deployments.'
+  }
+];
+---
+
+<div>
+  <h2 class="text-3xl font-bold mb-8 text-slate-100">Our Team</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {TEAM_MEMBERS.map((member) => (
+      <div class="bg-slate-800 rounded-lg p-6 text-center">
+        <div class="w-20 h-20 bg-indigo-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+          <span class="text-2xl font-bold text-white">{member.name.charAt(0)}</span>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 text-slate-100">{member.name}</h3>
+        <p class="text-indigo-400 mb-3">{member.role}</p>
+        <p class="text-slate-300 text-sm">{member.description}</p>
+      </div>
+    ))}
+  </div>
+</div>

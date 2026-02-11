@@ -1,0 +1,35 @@
+---
+import Footer from '@/tailwind-styled/layouts/Layout/Footer.astro';
+import Navbar from '@/tailwind-styled/layouts/Layout/Navbar.astro';
+import type { LayoutProps as Props } from '@/tailwind-styled/layouts/Layout/models';
+import { DESIGN_TOKENS } from '@/tailwind-styled/utils/designTokens';
+
+const { 
+  title, 
+  description = 'A modern static site built with Astro and Tailwind CSS',
+  currentPath = '/'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  
+  <body class="bg-slate-900 text-slate-100 min-h-screen antialiased">
+    <div class="flex flex-col min-h-screen">
+      <Navbar currentPath={currentPath} />
+      
+      <main class="flex-1">
+        <slot />
+      </main>
+      
+      <Footer />
+    </div>
+  </body>
+</html>
