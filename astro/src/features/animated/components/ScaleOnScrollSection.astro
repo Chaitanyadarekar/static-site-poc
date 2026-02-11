@@ -78,26 +78,8 @@
 </style>
 
 <script>
-  import { animate, scroll } from 'motion';
+  import { initScaleAnimation } from '../scripts/scaleAnimation';
   
-  function initScaleAnimation() {
-    const scaleRect = document.getElementById('scaleRect');
-    const section = document.querySelector('.scale-section');
-    
-    if (!scaleRect || !section) return;
-    
-    // Scroll-based animation
-    scroll(
-      animate(scaleRect, {
-        scale: [0.1, 1, 0.1]
-      }),
-      {
-        target: section,
-        offset: ['start end', 'center center', 'end start']
-      }
-    );
-  }
-  
-  // Initialize when DOM is loaded
-  document.addEventListener('DOMContentLoaded', initScaleAnimation);
+  // Initialize immediately since DOM is already loaded when script runs
+  initScaleAnimation();
 </script>

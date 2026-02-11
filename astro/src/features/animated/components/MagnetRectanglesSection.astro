@@ -133,49 +133,8 @@
 </style>
 
 <script>
-  import { animate, scroll } from 'motion';
+  import { initMagnetAnimation } from '../scripts/magnetAnimation';
   
-  function initMagnetAnimation() {
-    const largeRect = document.getElementById('largeRect');
-    const smallRect1 = document.getElementById('smallRect1');
-    const smallRect2 = document.getElementById('smallRect2');
-    const section = document.querySelector('.magnet-section');
-    
-    if (!largeRect || !smallRect1 || !smallRect2 || !section) return;
-    
-    scroll(
-      animate(largeRect, {
-        x: [-400, 0],
-      }),
-      {
-        target: section,
-        offset: ['start end', 'center center']
-      }
-    );
-    
-    // Animate small rectangles moving left and closer together
-    scroll(
-      animate(smallRect1, {
-        x: [400, -100],
-        y: [-50, -25],
-      }),
-      {
-        target: section,
-        offset: ['start end', 'center center']
-      }
-    );
-    
-    scroll(
-      animate(smallRect2, {
-        x: [400, -100],
-        y: [50, 25],
-      }),
-      {
-        target: section,
-        offset: ['start end', 'center center']
-      }
-    );
-  }
-  
-  document.addEventListener('DOMContentLoaded', initMagnetAnimation);
+  // Initialize immediately since DOM is already loaded when script runs
+  initMagnetAnimation();
 </script>

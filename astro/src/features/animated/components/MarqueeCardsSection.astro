@@ -163,66 +163,8 @@ const allCards = [...MARQUEE_CARDS, ...MARQUEE_CARDS];
 </style>
 
 <script>
-  import { animate } from 'motion';
+  import { initMarqueeAnimation } from '../scripts/marqueeAnimation';
   
-  function initMarqueeAnimation() {
-    const marqueeTrack = document.getElementById('marqueeTrack');
-    const cards = document.querySelectorAll('.card');
-    
-    if (!marqueeTrack || !cards.length) return;
-    
-    let hoverTimeout;
-    
-    cards.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        // Pause the marquee
-        marqueeTrack.classList.add('paused');
-        
-        // Scale the card with motion.js
-        animate(card, {
-          scale: 1.1,
-          y: -10
-        }, {
-          duration: 0.3,
-          easing: 'ease-out'
-        });
-        
-        // Clear any existing timeout
-        clearTimeout(hoverTimeout);
-      });
-      
-      card.addEventListener('mouseleave', () => {
-        // Resume the marquee after a short delay
-        hoverTimeout = setTimeout(() => {
-          marqueeTrack.classList.remove('paused');
-        }, 300);
-        
-        // Reset card scale
-        animate(card, {
-          scale: 1,
-          y: 0
-        }, {
-          duration: 0.3,
-          easing: 'ease-out'
-        });
-      });
-    });
-    
-    // Pause marquee on container hover for better UX
-    const container = document.querySelector('.marquee-container');
-    if (container) {
-      container.addEventListener('mouseenter', () => {
-        clearTimeout(hoverTimeout);
-      });
-      
-      container.addEventListener('mouseleave', () => {
-        hoverTimeout = setTimeout(() => {
-          marqueeTrack.classList.remove('paused');
-        }, 500);
-      });
-    }
-  }
-  
-  // Initialize when DOM is loaded
-  document.addEventListener('DOMContentLoaded', initMarqueeAnimation);
+  // Initialize immediately since DOM is already loaded when script runs
+  initMarqueeAnimation();
 </script>
