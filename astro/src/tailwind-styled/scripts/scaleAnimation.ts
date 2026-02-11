@@ -1,4 +1,4 @@
-import { animate, scroll, inView } from "motion";
+import { animate, scroll, inView } from "@motionone/dom";
 
 export function initScaleAnimation(): void {
   const scaleRect: HTMLElement | null = document.getElementById("scaleRect");

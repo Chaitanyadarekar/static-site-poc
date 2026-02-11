@@ -1,4 +1,4 @@
-import { animate, scroll, inView } from "motion";
+import { animate, scroll, inView } from "@motionone/dom";
 
 export function initMagnetAnimation(): void {
   const largeRect: HTMLElement | null = document.getElementById("largeRect");

@@ -1,4 +1,4 @@
-import { animate, inView } from "motion";
+import { animate, inView } from "@motionone/dom";
 
 export function initMarqueeAnimation(): void {
   const marqueeTrack: HTMLElement | null =
